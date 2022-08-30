@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useHistory} from 'react-router-dom'
+import {useState , useEffect} from 'react'
  
 
 
@@ -41,9 +42,30 @@ export default function SignIn() {
       password: data.get('password'),
     });
   };
-  let history = useHistory();
-  
 
+//logican code
+
+  const[email, setEmail] = useState('');
+  const[password, setPassword] = useState('');
+  let history = useHistory();
+  useEffect(()=>{if(localStorage.getItem('user-info')){history.push('/dashboard')}},[])
+
+ const clickLogin = () => {
+    return(console.warn(email,password));
+     let item = {email,password}
+     let result = fetch("https://63061703697408f7edd26813.mockapi.io/users/",{
+      method:'POST',
+      headers:{
+        "Content-type": "application/json",
+        "Accept": 'application/json'
+      },
+      body: JSON.stringify(item)
+     });
+     result = result.json();
+     localStorage.setItem(JSON.stringify(result))
+     history.push('/dashboard')
+  }
+  
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -71,6 +93,8 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              type="text"
+              onChange={(e)=>setEmail(e.target.value)}
               autoFocus
             />
             <TextField
@@ -81,6 +105,7 @@ export default function SignIn() {
               label="Password"
               type="password"
               id="password"
+              onChange={(e)=>setPassword(e.target.value)}
               autoComplete="current-password"
             />
             <FormControlLabel
@@ -92,7 +117,7 @@ export default function SignIn() {
               fullWidth
               variant="contained"
               sx={{ mt: 4, mb: 2 }}
-              onClick={() => history.push('./WelcomePage')}
+              onClick={clickLogin}
             >
               Login to Agora
             </Button>
