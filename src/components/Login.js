@@ -51,7 +51,8 @@ export default function SignIn() {
   useEffect(()=>{if(localStorage.getItem('user-info')){history.push('/dashboard')}},[])
 
  const clickLogin = () => {
-    return(console.warn(email,password));
+
+   
      let item = {email,password}
      let result = fetch("https://63061703697408f7edd26813.mockapi.io/users/",{
       method:'POST',
@@ -60,10 +61,13 @@ export default function SignIn() {
         "Accept": 'application/json'
       },
       body: JSON.stringify(item)
+      result = result.json();
      });
-     result = result.json();
+     return(
+     
      localStorage.setItem(JSON.stringify(result))
      history.push('/dashboard')
+     );
   }
   
   return (
