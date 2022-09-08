@@ -1,0 +1,55 @@
+
+.logo{
+    color:#fff;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: bold;
+}
+.ant-layout-sider{
+max-width: 300px !important;
+min-width: 300px !important;
+background-color: #050b46;
+}
+.ant-layout-sider-trigger{
+  display: none;
+}
+/*Nav bar css code*/
+.nav{
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  height: 100vh;
+
+ 
+  font-size: 20px;
+  font-weight: bold;
+  }
+  .nav ul{list-style: none;}
+  .nav ul li{margin: 10PX 0PX;}
+  .nav ul li a{color:#fff}
+  .nav ul li a:hover{color: rgba(247, 4, 223, 0.846);}
+  .nav ul li button a{margin: 40px 0px;}
+  .nav ul li button a{color:blue;font-weight: bold;}
+  
+
+
+  /*Login box code*/
+.login{
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #cdd0e6;
+ 
+  }
+  .login Form{
+    background-color: #fff;
+    padding: 40px;
+   border-radius: 15px;
+  }
+  .login form input{
+    padding: 8px;
+    margin: 5px;
+  }
